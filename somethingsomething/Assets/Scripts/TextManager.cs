@@ -11,9 +11,11 @@ public class TextManager : MonoBehaviour {
 	public string[] textLines;
 	public int currentLine;
 	public int endAtLine;
+	private float savedTimeScale;
 
 	// Use this for initialization
 	void Start () {
+		Time.timeScale = 0;
 		if (textFile != null) 
 		{
 			textLines = (textFile.text.Split ('\n'));
@@ -31,7 +33,7 @@ public class TextManager : MonoBehaviour {
 
 		theText.text = textLines[currentLine];
 
-		if (Input.GetButtonDown("Fire 1"))
+		if (Input.GetButtonDown("Fire1"))
 		{
 			currentLine++;
 		}
@@ -39,6 +41,7 @@ public class TextManager : MonoBehaviour {
 		{
 			TextBox.SetActive(false);
 			Joystick.SetActive(true);
+			Time.timeScale = 1;
 		}
 
 	}
