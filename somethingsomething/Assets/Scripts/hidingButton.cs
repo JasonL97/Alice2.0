@@ -26,16 +26,17 @@ public class hidingButton : MonoBehaviour {
             hide.pressHide = true;
         }
 
-        if (alice.nearLight)
+        if (alice.nearLight && alice.lantern != null)
         {
             alice.lantern.SetActive(true);
             alice.lightSource.SetActive(true);
             Destroy(alice.lantern);
+            alice.lantern = null;
         }
 
         if (alice.nearUnlockedDoor)
         {
-            if (alice.unlockedDoorOpen == true)
+            if (alice.unlockedDoorOpen == false)
             {
                 UnlockedDoorAnim.SetBool("Open", true);
                 UnlockedDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;

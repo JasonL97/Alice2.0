@@ -222,5 +222,26 @@ public class Player : MonoBehaviour
         {
             nearLight = false;
         }
+
+        if (col.gameObject.tag == "cellarDoor")
+        {
+            nearCellarDoor = false;
+        }
+        if (col.gameObject.tag == "labDoor")
+        {
+            nearLabDoor = false;
+        }
+        if (col.gameObject.tag == "storeDoor")
+        {
+            nearStoreDoor = false;
+        }
+        if (col.gameObject.tag == "basementDoor")
+        {
+            nearBasementDoor = false;
+        }
+        if (col.gameObject.tag == "unlockedDoor")
+        {
+            nearUnlockedDoor = false;
+        }
     }
 }

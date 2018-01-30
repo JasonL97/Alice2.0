@@ -8,9 +8,9 @@ public class Tutorial_Manager : MonoBehaviour {
 	public Text theText;
 	public TextAsset textFile;
 	public GameObject Joystick;
-	public string[] textLines;
-	public int currentLine;
-	public int endAtLine;
+	private string[] textLines;
+	private int currentLine;
+	private int endAtLine;
 	private float savedTimeScale;
 	public GameObject textManager;
 	public GameObject tutorialmanager;
@@ -29,8 +29,9 @@ public class Tutorial_Manager : MonoBehaviour {
 		{
 			endAtLine = textLines.Length - 1;
 		}
-			TextBox.SetActive(true);
-			Time.timeScale = 0;
+
+	 
+	    Time.timeScale = 0;
 		use1.SetActive (false);
 		run1.SetActive (false);
 		stamina1.SetActive (false);
@@ -40,7 +41,12 @@ public class Tutorial_Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		theText.text = textLines[currentLine];
+        if (currentLine < textLines.Length)
+        {
+            
+            TextBox.SetActive(true);
+            theText.text = textLines[currentLine];
+        }
 //		if (textManager.GetComponent<TextManager> ().prologue = true)
 //		{
 //			TextBox.SetActive(true);

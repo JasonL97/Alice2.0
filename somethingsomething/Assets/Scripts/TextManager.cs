@@ -8,9 +8,9 @@ public class TextManager : MonoBehaviour {
 	public Text theText;
 	public TextAsset textFile;
 	public GameObject Joystick;
-	public string[] textLines;
-	public int currentLine;
-	public int endAtLine;
+	private string[] textLines1;
+	private int currentLine;
+	private int endAtLine;
 	private float savedTimeScale;
 	public bool prologue = false;
 	public GameObject tutorialmanager;
@@ -19,12 +19,12 @@ public class TextManager : MonoBehaviour {
 		Time.timeScale = 0;
 		if (textFile != null) 
 		{
-			textLines = (textFile.text.Split ('\n'));
+			textLines1 = (textFile.text.Split ('\n'));
 
 		}
 		if (endAtLine == 0) 
 		{
-			endAtLine = textLines.Length - 1;
+			endAtLine = textLines1.Length - 1;
 		}
 		Joystick.SetActive(false);
 	}
@@ -32,7 +32,10 @@ public class TextManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		theText.text = textLines[currentLine];
+        if (currentLine < textLines1.Length)
+        {
+            theText.text = textLines1[currentLine];
+        }
 
 		if (Input.GetButtonDown("Fire1"))
 		{
