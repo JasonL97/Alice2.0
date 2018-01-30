@@ -12,7 +12,8 @@ public class TextManager : MonoBehaviour {
 	public int currentLine;
 	public int endAtLine;
 	private float savedTimeScale;
-
+	public bool prologue = false;
+	public GameObject tutorialmanager;
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 0;
@@ -40,8 +41,10 @@ public class TextManager : MonoBehaviour {
 		if (currentLine > endAtLine)
 		{
 			TextBox.SetActive(false);
-			Joystick.SetActive(true);
+			prologue = true;
 			Time.timeScale = 1;
+			tutorialmanager.SetActive (true);
+			Joystick.SetActive (true);
 		}
 
 	}

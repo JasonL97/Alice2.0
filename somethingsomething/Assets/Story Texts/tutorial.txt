@@ -1,0 +1,5 @@
+This is the joystick used to move the character
+This is the interaction button used to interact with stuff
+This is the sprint button, press once to activate sprinting, press again to toggle it off
+This is the stamina bar used to sprint, it will recover over time.
+This is the pause button to pause the game.
