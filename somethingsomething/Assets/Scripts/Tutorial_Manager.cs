@@ -46,12 +46,12 @@ public class Tutorial_Manager : MonoBehaviour {
             TextBox.SetActive(true);
             theText.text = textLines[currentLine];
         }
-//		if (textManager.GetComponent<TextManager> ().prologue = true)
-//		{
-//			TextBox.SetActive(true);
-//			Time.timeScale = 0;
-//		}
-		if (Input.GetButtonDown("Fire1"))
+        //if (textManager.GetComponent<TextManager>().prologue == true)
+        //{
+        //    TextBox.SetActive(true);
+        //    Time.timeScale = 0;
+        //}
+        if (Input.GetButtonDown("Fire1"))
 		{
 			currentLine++;
 		}
@@ -96,12 +96,5 @@ public class Tutorial_Manager : MonoBehaviour {
 		}
 	}
 
-    void InputCheck()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        }
-    }
+   
 }

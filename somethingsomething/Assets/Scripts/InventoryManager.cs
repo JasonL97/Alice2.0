@@ -61,7 +61,7 @@ public class InventoryManager : MonoBehaviour {
     {
         DescriptionText.gameObject.SetActive(true);
         ItemImage.gameObject.SetActive(true);
-        DescriptionText.text = "This is a Lantern, it is very very bright";
+        DescriptionText.text = "A lantern I found. It helps to light up my way.";
         ItemImage.sprite = InventoryItems[0].GetComponent<Image>().sprite;
     }
 
@@ -69,14 +69,14 @@ public class InventoryManager : MonoBehaviour {
     {
         DescriptionText.gameObject.SetActive(true);
         ItemImage.gameObject.SetActive(true);
-        DescriptionText.text = "This is a Cellar key, it is DA cellar key";
+        DescriptionText.text = "This seems to be the key to a certain workstation...?";
         ItemImage.sprite = InventoryItems[1].GetComponent<Image>().sprite;
     }
     public void Input_3rdSpace()
     {
         DescriptionText.gameObject.SetActive(true);
         ItemImage.gameObject.SetActive(true);
-        DescriptionText.text = "DINOOO";
+        DescriptionText.text = "The key to the Cellar room.";
         ItemImage.sprite = InventoryItems[2].GetComponent<Image>().sprite;
     }
 
@@ -84,7 +84,7 @@ public class InventoryManager : MonoBehaviour {
     {
         DescriptionText.gameObject.SetActive(true);
         ItemImage.gameObject.SetActive(true);
-        DescriptionText.text = "HUEHUEHEU HEHEHEHHE";
+        DescriptionText.text = "This key seems to unlock the Store room. I wonder whats in there?";
         ItemImage.sprite = InventoryItems[3].GetComponent<Image>().sprite;
     }
 
@@ -92,7 +92,7 @@ public class InventoryManager : MonoBehaviour {
     {
         DescriptionText.gameObject.SetActive(true);
         ItemImage.gameObject.SetActive(true);
-        DescriptionText.text = "dededdedede";
+        DescriptionText.text = "The key to the basement door. Now I can finally get out of here...!";
         ItemImage.sprite = InventoryItems[4].GetComponent<Image>().sprite;
     }
 

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 5460625c376ca0d4e9a39c5a3405bd55
+timeCreated: 1517406930
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 20
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Viner Hand ITC
+  fontNames:
+  - Viner Hand ITC
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6958e0fdbb164fa4c88660c5207a573e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

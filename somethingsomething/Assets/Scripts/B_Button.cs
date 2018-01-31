@@ -43,9 +43,6 @@ public class B_Button : MonoBehaviour {
             }
         }
     }      
-	
-    
-    
 
     public void OnButtonDown()
     {
