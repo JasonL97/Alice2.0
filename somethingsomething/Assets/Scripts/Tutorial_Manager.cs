@@ -42,8 +42,7 @@ public class Tutorial_Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (currentLine < textLines.Length)
-        {
-            
+        {            
             TextBox.SetActive(true);
             theText.text = textLines[currentLine];
         }
@@ -96,4 +95,13 @@ public class Tutorial_Manager : MonoBehaviour {
 			tutorialmanager.SetActive (false);
 		}
 	}
+
+    void InputCheck()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        }
+    }
 }

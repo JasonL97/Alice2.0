@@ -13,6 +13,10 @@ TagManager:
   - basementDoor
   - unlockedDoor
   - LabKey
+  - CellarKey
+  - StoreKey
+  - BasementKey
+  - RunButton
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 86f97c21e01add94aa06bdc1dae8c75a
+timeCreated: 1517383984
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: dogMesh
+    100004: head
+    100006: L_backPaw
+    100008: L_backToe
+    100010: L_Carpal
+    100012: L_Elbow
+    100014: L_frontPaw
+    100016: L_frontToe
+    100018: L_Hip
+    100020: L_Scapular
+    100022: L_Shoulder
+    100024: L_Stifle
+    100026: L_Tarsal
+    100028: L_upperHip
+    100030: lowerHead
+    100032: mainController
+    100034: neck
+    100036: R_backPaw
+    100038: R_backToe
+    100040: R_Carpal
+    100042: R_Elbow
+    100044: R_frontPaw
+    100046: R_frontToe
+    100048: R_Hip
+    100050: R_Scapular
+    100052: R_Shoulder
+    100054: R_Stifle
+    100056: R_Tarsal
+    100058: R_upperHip
+    100060: root
+    100062: spineA
+    100064: spineB
+    100066: spineC
+    100068: tailA
+    100070: tailB
+    100072: tailBone
+    100074: tailC
+    100076: tailD
+    400000: //RootNode
+    400002: dogMesh
+    400004: head
+    400006: L_backPaw
+    400008: L_backToe
+    400010: L_Carpal
+    400012: L_Elbow
+    400014: L_frontPaw
+    400016: L_frontToe
+    400018: L_Hip
+    400020: L_Scapular
+    400022: L_Shoulder
+    400024: L_Stifle
+    400026: L_Tarsal
+    400028: L_upperHip
+    400030: lowerHead
+    400032: mainController
+    400034: neck
+    400036: R_backPaw
+    400038: R_backToe
+    400040: R_Carpal
+    400042: R_Elbow
+    400044: R_frontPaw
+    400046: R_frontToe
+    400048: R_Hip
+    400050: R_Scapular
+    400052: R_Shoulder
+    400054: R_Stifle
+    400056: R_Tarsal
+    400058: R_upperHip
+    400060: root
+    400062: spineA
+    400064: spineB
+    400066: spineC
+    400068: tailA
+    400070: tailB
+    400072: tailBone
+    400074: tailC
+    400076: tailD
+    4300000: dogMesh
+    7400000: Walk
+    9500000: //RootNode
+    13700000: dogMesh
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dogTexture
+    second: {fileID: 2100000, guid: 127a303c8cca8f149b72e3c1ca04217b, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour {
     public List<GameObject> InventorySpace;
     public List<GameObject> InventoryItems;
+    public Text DescriptionText;
+    public Image ItemImage;
     public Player alice;
 	// Use this for initialization
 	void Start () {
@@ -17,12 +20,11 @@ public class InventoryManager : MonoBehaviour {
 	void Update () {
 
         CheckInventory();
-		
 	}
 
     void CheckInventory()
     {
-        Debug.Log("Test");
+       
         if (alice.lightSource.activeSelf)
         {
             InventoryItems[0].SetActive(true);
@@ -54,4 +56,44 @@ public class InventoryManager : MonoBehaviour {
             InventoryItems[4].transform.position = InventorySpace[4].transform.position;
         }
     }
+
+    public void Input_1stSpace()
+    {
+        DescriptionText.gameObject.SetActive(true);
+        ItemImage.gameObject.SetActive(true);
+        DescriptionText.text = "This is a Lantern, it is very very bright";
+        ItemImage.sprite = InventoryItems[0].GetComponent<Image>().sprite;
+    }
+
+    public void Input_2ndSpace()
+    {
+        DescriptionText.gameObject.SetActive(true);
+        ItemImage.gameObject.SetActive(true);
+        DescriptionText.text = "This is a Cellar key, it is DA cellar key";
+        ItemImage.sprite = InventoryItems[1].GetComponent<Image>().sprite;
+    }
+    public void Input_3rdSpace()
+    {
+        DescriptionText.gameObject.SetActive(true);
+        ItemImage.gameObject.SetActive(true);
+        DescriptionText.text = "DINOOO";
+        ItemImage.sprite = InventoryItems[2].GetComponent<Image>().sprite;
+    }
+
+    public void Input_4thSpace()
+    {
+        DescriptionText.gameObject.SetActive(true);
+        ItemImage.gameObject.SetActive(true);
+        DescriptionText.text = "HUEHUEHEU HEHEHEHHE";
+        ItemImage.sprite = InventoryItems[3].GetComponent<Image>().sprite;
+    }
+
+    public void Input_5thSpace()
+    {
+        DescriptionText.gameObject.SetActive(true);
+        ItemImage.gameObject.SetActive(true);
+        DescriptionText.text = "dededdedede";
+        ItemImage.sprite = InventoryItems[4].GetComponent<Image>().sprite;
+    }
+
 }

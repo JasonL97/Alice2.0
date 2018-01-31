@@ -6,6 +6,7 @@ public class B_Button : MonoBehaviour {
 
     public GameObject player;
     public bool Boosting = false;
+    public LayerMask myLayerMask;
     public float elaspedTime = 0;
     Stamina pls;
     Player pl; 
@@ -14,13 +15,18 @@ public class B_Button : MonoBehaviour {
         pls = player.GetComponent<Stamina>();
         pl = player.GetComponent<Player>();
     }
-	
-	// Update is called once per frame
-	public void Update () {
+
+    // Update is called once per frame
+    public void Update()
+    {
+
+        OnButtonDown();
+       
 
         if (Boosting && pls.currentStamina > 0)
         {
             elaspedTime = 0;
+            pl.moveSpeed = 150;
             pls.currentStamina -= 20 * Time.deltaTime;
         }
         else
@@ -36,40 +42,28 @@ public class B_Button : MonoBehaviour {
                 }
             }
         }
-        
-        
-	}
-
-    void buttonPressed()
-    {
-        if (Input.GetButtonDown("Jump"))
-        {
-            Boosting = true;
-        }
-        else
-        {
-            Boosting = false;
-        }
-    }
+    }      
+	
+    
+    
 
     public void OnButtonDown()
     {
-        
-        if (pls.currentStamina != 0)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
         {
-            if (Boosting == false)
+            if (RectTransformUtility.RectangleContainsScreenPoint(this.gameObject.GetComponent<RectTransform>(), Input.GetTouch(0).deltaPosition, player.GetComponent<Player>().mainCamera.GetComponent<Camera>()))
             {
-                Player pl = player.GetComponent<Player>();
-                pl.moveSpeed = 150;
-                Boosting = true;               
+                Debug.Log("Testing");
+                if (Input.GetButton("Fire1") && pls.currentStamina != 0)
+                {
+                    Boosting = true;
+                }
+
+                if (Input.GetButtonUp("Fire1"))
+                {
+                    Boosting = false;
+                }
             }
-            else if (Boosting == true)
-            {
-                Player pl = player.GetComponent<Player>();
-                pl.moveSpeed = 100f;
-                Boosting = false;
-            }
-        }      
+        }
     }
-  
 }
