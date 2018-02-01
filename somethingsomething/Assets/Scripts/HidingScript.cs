@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HidingScript : MonoBehaviour {
+public class HidingScript : MonoBehaviour
+{
 
     //public SkinnedMeshRenderer alice;
     public GameObject HideButton;
@@ -14,6 +15,10 @@ public class HidingScript : MonoBehaviour {
     public Camera mainCam;
     public Camera hideCam;
 
+    public AudioSource musicPlayer;
+    public AudioClip musicNormal;
+    public AudioClip musicHiding;
+
     public GameObject hideSpot1;
     public GameObject hideSpot2;
     public GameObject hideSpot3;
@@ -23,7 +28,8 @@ public class HidingScript : MonoBehaviour {
     public float timeThreshold = 1.0f;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         //alice = GetComponent<SkinnedMeshRenderer>();
         //alice.enabled = true;
         mainCam.enabled = true;
@@ -31,14 +37,15 @@ public class HidingScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         Hide();
-	}
+    }
 
     void Hide()
-    {      
+    {
         if (isHide == false && pressHide == true && alicePlayerScript.isMoving == false)
-        {           
+        {
             hidingButton HideScript = HideButton.GetComponent<hidingButton>();
             isHide = true;
             //alice.enabled = false;
@@ -47,15 +54,20 @@ public class HidingScript : MonoBehaviour {
             aliceAnim.SetBool("isHiding", true);
             pressHide = false;
 
-        } else if(alicePlayerScript.isMoving == true)
+            musicPlayer.clip = musicHiding;
+
+        }
+        else if (alicePlayerScript.isMoving == true)
         {
             isHide = false;
             //alice.enabled = true;
             hideCam.enabled = false;
             aliceAnim.SetBool("isHiding", false);
             mainCam.enabled = true;
+            alicePlayerScript.GetComponent<Player>().isHiding = false;
+            musicPlayer.clip = musicNormal;
         }
-        
+
     }
 
     void OnTriggerStay(Collider col)
@@ -63,39 +75,9 @@ public class HidingScript : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             timePassed += Time.deltaTime;
-            if(timePassed >= timeThreshold)
-            {
-                hideSpot1.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                timePassed = 0f;
-            }
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            timePassed += Time.deltaTime;
             if (timePassed >= timeThreshold)
             {
-                hideSpot2.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                timePassed = 0f;
-            }
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            timePassed += Time.deltaTime;
-            if (timePassed >= timeThreshold)
-            {
-                hideSpot3.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                timePassed = 0f;
-            }
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            timePassed += Time.deltaTime;
-            if (timePassed >= timeThreshold)
-            {
-                hideSpot4.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                transform.GetChild(0).gameObject.SetActive(true);
                 timePassed = 0f;
             }
         }
@@ -105,22 +87,7 @@ public class HidingScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            hideSpot1.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            hideSpot2.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            hideSpot3.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            hideSpot4.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 }

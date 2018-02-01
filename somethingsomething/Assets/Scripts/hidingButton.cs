@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class hidingButton : MonoBehaviour {
 
@@ -24,6 +25,7 @@ public class hidingButton : MonoBehaviour {
         {
             HidingScript hide = alice.HidingSpot.GetComponent<HidingScript>();
             hide.pressHide = true;
+            alice.GetComponent<Player>().isHiding = true;
         }
 
         if (alice.nearLight && alice.lantern != null)
@@ -114,14 +116,16 @@ public class hidingButton : MonoBehaviour {
                 BasementDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
                 BasementDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
                 alice.basementDoorOpen = true;
-            }else
+               
+            }
+            else
             {
                 BasementDoorAnim.SetBool("Open", false);
                 BasementDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
                 BasementDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
                 alice.basementDoorOpen = false;
             }
-
+            SceneManager.LoadScene("winScene");
         }
     }
 }

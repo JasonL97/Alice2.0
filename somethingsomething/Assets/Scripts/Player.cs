@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     public bool isMoving = false;
     public bool isIdling = false;
+    public bool isHiding = false;
     public bool hideSpot = false;
     public bool isRun = false;
     public bool pressRun = false;
@@ -106,6 +107,17 @@ public class Player : MonoBehaviour
             anim.SetBool("isMove", false);
             transform.forward = new Vector3(transform.forward.x, transform.forward.y, frontDirection);
         }
+        if (isHiding == true)
+        {
+            thisRigidbody.isKinematic = true;
+            GetComponent<BoxCollider>().enabled = false;
+        }
+        else
+        {
+            thisRigidbody.isKinematic = false;
+            GetComponent<BoxCollider>().enabled = true;
+        }
+
     }
 
     void Move()

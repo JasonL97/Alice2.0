@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class B_Button : MonoBehaviour {
+public class B_Button : MonoBehaviour
+{
 
     public GameObject player;
     public bool Boosting = false;
     public LayerMask myLayerMask;
     public float elaspedTime = 0;
     Stamina pls;
-    Player pl; 
+    Player pl;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         pls = player.GetComponent<Stamina>();
         pl = player.GetComponent<Player>();
     }
@@ -20,18 +22,30 @@ public class B_Button : MonoBehaviour {
     public void Update()
     {
 
-        OnButtonDown();
-       
+        
 
-        if (Boosting && pls.currentStamina > 0)
+        bool sprinting = false;//Input.GetKey(KeyCode.LeftShift);
+        if (Input.touchCount > 0)
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                if (RectTransformUtility.RectangleContainsScreenPoint(
+                    this.gameObject.GetComponent<RectTransform>(),
+                    touch.position,
+                    player.GetComponent<Player>().mainCamera.GetComponent<Camera>()))
+                {
+                    sprinting = true;
+                }
+            }
+        }
+        if (sprinting && pls.currentStamina > 0)
         {
             elaspedTime = 0;
-            pl.moveSpeed = 300;
+            pl.moveSpeed = 400;
             pls.currentStamina -= 20 * Time.deltaTime;
         }
         else
         {
-            Boosting = false;
             pl.moveSpeed = 200;
             elaspedTime += Time.deltaTime;
             if (elaspedTime >= 3)
@@ -42,7 +56,29 @@ public class B_Button : MonoBehaviour {
                 }
             }
         }
-    }      
+
+
+
+        //if (Boosting && pls.currentStamina > 0)
+        //{
+        //    elaspedTime = 0;
+        //    pl.moveSpeed = 300;
+        //    pls.currentStamina -= 20 * Time.deltaTime;
+        //}
+        //else
+        //{
+        //    Boosting = false;
+        //    pl.moveSpeed = 200;
+        //    elaspedTime += Time.deltaTime;
+        //    if (elaspedTime >= 3)
+        //    {
+        //        if (pls.currentStamina <= 100)
+        //        {
+        //            pls.currentStamina += 10 * Time.deltaTime;
+        //        }
+        //    }
+        //}
+    }
 
     public void OnButtonDown()
     {
