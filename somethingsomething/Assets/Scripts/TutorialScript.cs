@@ -25,6 +25,7 @@ public class TutorialScript : MonoBehaviour
     {
         if (tutorial_Canvas.activeSelf == true)
         {
+            Time.timeScale = 0;
             if (Input.GetButtonDown("Fire1"))
             {
                 if (tut1.gameObject.activeSelf == true)
@@ -55,6 +56,7 @@ public class TutorialScript : MonoBehaviour
                 else if (tut6.gameObject.activeSelf == true)
                 {
                     tut6.gameObject.SetActive(false);
+                    Time.timeScale = 1;
                     tutorial_Canvas.SetActive(false);
                 }
             }

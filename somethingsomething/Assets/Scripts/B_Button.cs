@@ -26,13 +26,13 @@ public class B_Button : MonoBehaviour {
         if (Boosting && pls.currentStamina > 0)
         {
             elaspedTime = 0;
-            pl.moveSpeed = 150;
+            pl.moveSpeed = 300;
             pls.currentStamina -= 20 * Time.deltaTime;
         }
         else
         {
             Boosting = false;
-            pl.moveSpeed = 100;
+            pl.moveSpeed = 200;
             elaspedTime += Time.deltaTime;
             if (elaspedTime >= 3)
             {

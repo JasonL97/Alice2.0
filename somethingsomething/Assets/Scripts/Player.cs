@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public float cameraSpeed = 20f;
     Vector3 forward, right;
     public GameObject lightSource;
+    public GameObject doggo;
 
    
     public bool isCellarKey = false;
@@ -156,6 +157,7 @@ public class Player : MonoBehaviour
         {
             isLabKey = true;
             Destroy(collision.gameObject);
+            doggo.SetActive(true);
         }
 
         if (collision.gameObject.tag == "CellarKey")
