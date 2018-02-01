@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class navmesh_testing : MonoBehaviour {
     public Transform player;
@@ -31,5 +32,13 @@ public class navmesh_testing : MonoBehaviour {
         }
         agent.SetDestination(player.position);
 
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene("gameOverScreen");
+        }
     }
 }
