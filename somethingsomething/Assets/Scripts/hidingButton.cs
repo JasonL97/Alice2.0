@@ -12,6 +12,9 @@ public class hidingButton : MonoBehaviour {
     public Animator StoreDoorAnim;
     public Animator BasementDoorAnim;
     public Animator UnlockedDoorAnim;
+    public AudioSource musicPlayer;
+    public AudioClip doorOpen;
+    public AudioClip doorClose;
 
 
     // Update is called once per frame
@@ -38,12 +41,15 @@ public class hidingButton : MonoBehaviour {
 
         if (alice.nearUnlockedDoor)
         {
+            
             if (alice.unlockedDoorOpen == false)
             {
                 UnlockedDoorAnim.SetBool("Open", true);
                 UnlockedDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
                 UnlockedDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
                 alice.unlockedDoorOpen = true;
+                musicPlayer.clip = doorOpen;
+                musicPlayer.Play();
             }
             else
             {
@@ -51,6 +57,8 @@ public class hidingButton : MonoBehaviour {
                 UnlockedDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
                 UnlockedDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
                 alice.unlockedDoorOpen = false;
+                musicPlayer.clip = doorClose;
+                musicPlayer.Play();
             }
         }
 
@@ -62,6 +70,9 @@ public class hidingButton : MonoBehaviour {
                 CellaurDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
                 CellaurDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
                 alice.cellarDoorOpen = true;
+                musicPlayer.clip = doorOpen;
+                musicPlayer.Play();
+
             }
             else
             {
@@ -69,6 +80,9 @@ public class hidingButton : MonoBehaviour {
                 CellaurDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
                 CellaurDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
                 alice.cellarDoorOpen = false;
+                musicPlayer.clip = doorClose;
+                musicPlayer.Play();
+
             }
         }
 
@@ -80,6 +94,9 @@ public class hidingButton : MonoBehaviour {
                 LabDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
                 LabDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
                 alice.labDoorOpen = true;
+                musicPlayer.clip = doorOpen;
+                musicPlayer.Play();
+
             }
             else
             {
@@ -87,6 +104,9 @@ public class hidingButton : MonoBehaviour {
                 LabDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
                 LabDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
                 alice.labDoorOpen = false;
+                musicPlayer.clip = doorClose;
+                musicPlayer.Play();
+
             }
         }
 
@@ -98,6 +118,9 @@ public class hidingButton : MonoBehaviour {
                 StoreDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
                 StoreDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
                 alice.storeDoorOpen = true;
+                musicPlayer.clip = doorOpen;
+                musicPlayer.Play();
+
             }
             else
             {
@@ -105,6 +128,9 @@ public class hidingButton : MonoBehaviour {
                 StoreDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
                 StoreDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
                 alice.storeDoorOpen = false;
+                musicPlayer.clip = doorClose;
+                musicPlayer.Play();
+
             }
         }
 
@@ -116,7 +142,10 @@ public class hidingButton : MonoBehaviour {
                 BasementDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
                 BasementDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
                 alice.basementDoorOpen = true;
-               
+                musicPlayer.clip = doorOpen;
+                musicPlayer.Play();
+
+
             }
             else
             {
@@ -124,6 +153,9 @@ public class hidingButton : MonoBehaviour {
                 BasementDoorAnim.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
                 BasementDoorAnim.gameObject.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
                 alice.basementDoorOpen = false;
+                musicPlayer.clip = doorClose;
+                musicPlayer.Play();
+
             }
             SceneManager.LoadScene("winScene");
         }

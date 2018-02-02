@@ -55,6 +55,9 @@ public class Player : MonoBehaviour
     //public bool isHide = false;
     //public bool pressHide = false;
 
+    public AudioSource musicPlayer;
+    public AudioClip item_pickup;
+
     private Animator anim;
 
     // Use this for initialization
@@ -170,23 +173,34 @@ public class Player : MonoBehaviour
             isLabKey = true;
             Destroy(collision.gameObject);
             doggo.SetActive(true);
+            musicPlayer.clip = item_pickup;
+            musicPlayer.Play();
         }
 
         if (collision.gameObject.tag == "CellarKey")
         {
             isCellarKey = true;
             Destroy(collision.gameObject);
+            musicPlayer.clip = item_pickup;
+            musicPlayer.Play();
+
         }
 
         if (collision.gameObject.tag == "BasementKey")
         {
             isBasementKey = true;
             Destroy(collision.gameObject);
+            musicPlayer.clip = item_pickup;
+            musicPlayer.Play();
+
         }
         if (collision.gameObject.tag == "StoreKey")
         {
             isStoreKey = true;
             Destroy(collision.gameObject);
+            musicPlayer.clip = item_pickup;
+            musicPlayer.Play();
+
         }
 
     }
