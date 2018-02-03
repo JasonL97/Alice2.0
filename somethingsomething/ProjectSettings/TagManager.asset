@@ -17,6 +17,11 @@ TagManager:
   - StoreKey
   - BasementKey
   - RunButton
+  - CellarRoomTrigger
+  - bag
+  - DogSpawnTrigger
+  - Note
+  - Diary
   layers:
   - Default
   - TransparentFX

@@ -20,10 +20,7 @@ public class B_Button : MonoBehaviour
 
     // Update is called once per frame
     public void Update()
-    {
-
-        
-
+    {  
         bool sprinting = false;//Input.GetKey(KeyCode.LeftShift);
         if (Input.touchCount > 0)
         {

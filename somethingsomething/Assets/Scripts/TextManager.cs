@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TextManager : MonoBehaviour {
 	public GameObject TextBox;
 	public Text theText;
+    public GameObject SystemText;
 	public TextAsset textFile;
 	public GameObject Joystick;
 	private string[] textLines;
@@ -22,15 +23,14 @@ public class TextManager : MonoBehaviour {
 		if (textFile != null) 
 		{
 			textLines = (textFile.text.Split ('\n'));
-
 		}
 		if (endAtLine == 0) 
 		{
 			endAtLine = textLines.Length - 1;
 		}
 		Joystick.SetActive(false);
+        SystemText.SetActive(false);
         TextBox.SetActive(true);
-
     }
 	
 	// Update is called once per frame
@@ -54,6 +54,7 @@ public class TextManager : MonoBehaviour {
 			Joystick.SetActive (true);
             prolougeManager.SetActive (false);
             tutorialCanvas.SetActive(true);
+            tutorialCanvas.GetComponent<TutorialScript>().StartGame = true;      
         }
 
     }

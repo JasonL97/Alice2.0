@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pause_button : MonoBehaviour {
     public GameObject pauseCanvas;
     public GameObject InventoryPanel;
+    public Player alice;
     public bool isTrue = false;
     private float savedTimeScale;
 
@@ -22,7 +23,7 @@ public class Pause_button : MonoBehaviour {
     {
         if (isTrue == true)
         {
-            pauseCanvas.SetActive(false);
+            pauseCanvas.SetActive(false);   
             InventoryPanel.SetActive(false);
             isTrue = false;
             Time.timeScale = savedTimeScale;
@@ -30,7 +31,10 @@ public class Pause_button : MonoBehaviour {
         else if (isTrue == false)
         {
             pauseCanvas.SetActive(true);
-            InventoryPanel.SetActive(true);
+
+            if (alice.HaveBag)
+                InventoryPanel.SetActive(true);
+
             isTrue = true;
             Time.timeScale = 0;
         }

@@ -40,7 +40,7 @@ public class Tutorial_Manager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (currentLine < textLines.Length)
         {            
             TextBox.SetActive(true);

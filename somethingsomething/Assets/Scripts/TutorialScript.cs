@@ -13,11 +13,18 @@ public class TutorialScript : MonoBehaviour
     public GameObject tut6;
     public GameObject tutorial_Canvas;
     public GameObject prolougueManager;
+    public Player alice;
+    public bool StartGame = false;
+    public bool TeachInven = false;
+    public bool TeachHide = false;
+    public bool TeachSave = false;
 
     // Use this for initialization
     void Start()
     {
+        tut1.gameObject.SetActive(true);
         tutorial_Canvas.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -25,40 +32,43 @@ public class TutorialScript : MonoBehaviour
     {
         if (tutorial_Canvas.activeSelf == true)
         {
-            Time.timeScale = 0;
             if (Input.GetButtonDown("Fire1"))
             {
-                if (tut1.gameObject.activeSelf == true)
+                if (StartGame && tut1.gameObject.activeSelf == true)
                 {
                     tut1.gameObject.SetActive(false);
                     tut2.gameObject.SetActive(true);
+                    alice.FreezeMovement = true;
                 }
-                else if (tut2.gameObject.activeSelf == true)
+                else if (StartGame && tut2.gameObject.activeSelf == true)
                 {
+                    StartGame = false;
                     tut2.gameObject.SetActive(false);
-                    tut3.gameObject.SetActive(true);
+                    alice.FreezeMovement = false;
                 }
-                else if (tut3.gameObject.activeSelf == true)
+
+                if (TeachInven && alice.TutBag)
                 {
+                    TeachInven = false;
+                    alice.FreezeMovement = false;
                     tut3.gameObject.SetActive(false);
-                    tut4.gameObject.SetActive(true);
                 }
-                else if (tut4.gameObject.activeSelf == true)
-                {
+
+                if (TeachHide && alice.TutHide)
+                { 
+                    TeachHide = false;
+                    alice.SurpriseMark.SetActive(false);
+                    alice.Dog_Spawn_Past = true;                   
                     tut4.gameObject.SetActive(false);
-                    tut5.gameObject.SetActive(true);
+                    alice.FreezeMovement = false;
                 }
-                else if (tut5.gameObject.activeSelf == true)
+
+                if (TeachSave && alice.TutSave)
                 {
+                    TeachSave = false;
+                    alice.FreezeMovement = false;
                     tut5.gameObject.SetActive(false);
-                    tut6.gameObject.SetActive(true);
-                }
-                else if (tut6.gameObject.activeSelf == true)
-                {
-                    tut6.gameObject.SetActive(false);
-                    Time.timeScale = 1;
-                    tutorial_Canvas.SetActive(false);
-                }
+                }         
             }
         }
     }
