@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -291,6 +292,8 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
         {
+
+        
             if (col.gameObject.tag == "lantern")
             {
                 nearLight = true;
@@ -397,7 +400,11 @@ public class Player : MonoBehaviour
                 SurpriseMark.SetActive(true);
                 FreezeMovement = true;
             }
-        }
+        //if (col.gameObject.tag == "WinArea")
+        //{
+        //    SceneManager.LoadScene("winScreen");
+        //}
+    }
 
     void OnTriggerExit(Collider col)
     {
