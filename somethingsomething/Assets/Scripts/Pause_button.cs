@@ -6,6 +6,7 @@ public class Pause_button : MonoBehaviour {
     public GameObject pauseCanvas;
     public GameObject InventoryPanel;
     public Player alice;
+    public AudioSource sound;
     public bool isTrue = false;
     private float savedTimeScale;
 
@@ -21,6 +22,7 @@ public class Pause_button : MonoBehaviour {
 
     public void OnMouseButton()
     {
+        sound.Play();
         if (isTrue == true)
         {
             pauseCanvas.SetActive(false);   

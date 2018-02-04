@@ -106,6 +106,10 @@ public class Player : MonoBehaviour
 
     public AudioSource musicPlayer;
     public AudioClip item_pickup;
+    public AudioClip walking;
+    public AudioSource heartbeatPlayer;
+    public AudioClip normalhb;
+    public AudioClip fasthb;
 
     private Animator anim;
 
@@ -213,11 +217,16 @@ public class Player : MonoBehaviour
         {
             thisRigidbody.isKinematic = true;
             GetComponent<BoxCollider>().enabled = false;
+            heartbeatPlayer.clip = fasthb;
+            heartbeatPlayer.Play();
         }
         else
         {
             thisRigidbody.isKinematic = false;
             GetComponent<BoxCollider>().enabled = true;
+            heartbeatPlayer.clip = normalhb;
+            heartbeatPlayer.Play();
+
         }
 
     }
@@ -236,6 +245,8 @@ public class Player : MonoBehaviour
             transform.position += rightMovement;
             transform.position += upMovement;
             isMoving = true;
+            musicPlayer.clip = walking;
+            musicPlayer.Play();
             anim.SetBool("isIdle", false);
             anim.SetBool("isMove", true);
         }

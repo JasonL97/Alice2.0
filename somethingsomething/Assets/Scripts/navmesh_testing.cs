@@ -34,7 +34,7 @@ public class navmesh_testing : MonoBehaviour
     float ViewDistance = 400;
     float EnemyNPlayerDistance;
 
-
+    public AudioSource doggrowl;
     // Use this for initialization
     void Start()
     {
@@ -73,6 +73,7 @@ public class navmesh_testing : MonoBehaviour
                 if (EnemyNPlayerDistance < 600 && angleToPlayer >= -45 && angleToPlayer <= 45)
                 {
                     Debug.Log("Player in sight!");
+                    doggrowl.Play();
                     NavMesh.CalculatePath(this.transform.position, player.position, NavMesh.AllAreas, agentPath);
                     agent.SetPath(agentPath);
                 }

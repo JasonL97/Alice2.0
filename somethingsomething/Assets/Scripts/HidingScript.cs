@@ -15,9 +15,9 @@ public class HidingScript : MonoBehaviour
     public Camera mainCam;
     public Camera hideCam;
 
-    public AudioSource musicPlayer;
-    public AudioClip musicNormal;
-    public AudioClip musicHiding;
+    //public AudioSource musicPlayer;
+    //public AudioClip musicNormal;
+    //public AudioClip musicHiding;
 
     public GameObject hideSpot1;
     public GameObject hideSpot2;
@@ -54,7 +54,7 @@ public class HidingScript : MonoBehaviour
             aliceAnim.SetBool("isHiding", true);
             pressHide = false;
 
-            musicPlayer.clip = musicHiding;
+            //musicPlayer.clip = musicHiding;
 
         }
         else if (alicePlayerScript.isMoving == true)
@@ -65,7 +65,7 @@ public class HidingScript : MonoBehaviour
             aliceAnim.SetBool("isHiding", false);
             mainCam.enabled = true;
             alicePlayerScript.GetComponent<Player>().isHiding = false;
-            musicPlayer.clip = musicNormal;
+            //musicPlayer.clip = musicNormal;
         }
 
     }

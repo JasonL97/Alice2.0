@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Load_Scene : MonoBehaviour
 {
     public Graphic fade;
+    public AudioSource sound;
 
     public void Start()
     {
@@ -14,6 +15,7 @@ public class Load_Scene : MonoBehaviour
     }
     public void OnMouseButton()
     {
+        sound.Play();
         StartCoroutine(DoFadeAndLoad());
     }
 
