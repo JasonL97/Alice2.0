@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5079e28f8cba82345bc3556b1d5bf4a4
-timeCreated: 1517670980
+guid: 9ff33556b99d5d64c9152cf3b7f4dd2a
+timeCreated: 1517742537
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -16,7 +16,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: storeRoomFront
-    second: {fileID: 2100000, guid: 89b0bac1d31383c44b5af3197fe7219a, type: 2}
+    second: {fileID: 2100000, guid: 791cced4ed9866e418692a102c2ff2ce, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

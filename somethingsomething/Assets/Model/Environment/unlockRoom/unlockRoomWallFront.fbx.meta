@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a1f19e27b6c331a479a2ae69ffbee4d9
-timeCreated: 1517670801
+guid: 3424e3356409eb14b82cb83543e7e655
+timeCreated: 1517744031
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -16,7 +16,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: unlockRoomFront
-    second: {fileID: 2100000, guid: 0f286186fe0f7dd48a03ded564397f1f, type: 2}
+    second: {fileID: 2100000, guid: fd399dc7e1cc11b4ca3e45bd776a06a1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ccdaf74996f79d04d94d30d3c39e22bd
-timeCreated: 1517671129
+guid: 8ad0a5c4a73513a40b687f5705ca9d16
+timeCreated: 1517735974
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -16,7 +16,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: basementRoomFront
-    second: {fileID: 2100000, guid: 15c0d3a196d405e4ba7315ab7bea47c4, type: 2}
+    second: {fileID: 2100000, guid: f6ed698f494db344c94203f7ebffc709, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

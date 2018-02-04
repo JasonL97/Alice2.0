@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: bd8a87f1abd893f4f98a03b62f6d37f9
-timeCreated: 1517671243
+guid: 11ed2382b277eef40b2559705ab68aa5
+timeCreated: 1517738707
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -16,7 +16,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: cellarRoomFront
-    second: {fileID: 2100000, guid: 65938284f603f684092d7523daf7d4e8, type: 2}
+    second: {fileID: 2100000, guid: 229fcc6722d222e4891464ac93977df5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
