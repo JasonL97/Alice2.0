@@ -18,7 +18,7 @@ ModelImporter:
       name: bottle1Diffuse
     second: {fileID: 2100000, guid: 6a8b09126fdbc9642af1d944fa6400ef, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
