@@ -66,7 +66,7 @@ public class InventoryManager : MonoBehaviour
         {
             DescriptionText.gameObject.SetActive(true);
             ItemImage.gameObject.SetActive(true);
-            DescriptionText.text = "A lantern I found. It helps to light up my way.";
+            DescriptionText.text = "A lantern I found. It helps to light up the way.";
             ItemImage.sprite = InventoryItems[0].GetComponent<Image>().sprite;
         }
     }
@@ -77,7 +77,7 @@ public class InventoryManager : MonoBehaviour
         {
             DescriptionText.gameObject.SetActive(true);
             ItemImage.gameObject.SetActive(true);
-            DescriptionText.text = "This seems to be the key to a certain workstation...?";
+            DescriptionText.text = "This seems to be the key to a certain lab...?";
             ItemImage.sprite = InventoryItems[1].GetComponent<Image>().sprite;
         }
     }
@@ -87,7 +87,7 @@ public class InventoryManager : MonoBehaviour
         {
             DescriptionText.gameObject.SetActive(true);
             ItemImage.gameObject.SetActive(true);
-            DescriptionText.text = "The key to the Cellar room.";
+            DescriptionText.text = "A key... I wonder where can I use it?";
             ItemImage.sprite = InventoryItems[2].GetComponent<Image>().sprite;
         }
     }

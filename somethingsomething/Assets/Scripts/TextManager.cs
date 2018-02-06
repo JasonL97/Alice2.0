@@ -12,6 +12,7 @@ public class TextManager : MonoBehaviour {
 	private string[] textLines;
 	private int currentLine;
 	private int endAtLine;
+    public Player alice;
 	private float savedTimeScale;
 	public bool prologue = false;
 	public GameObject prolougeManager;
@@ -19,7 +20,7 @@ public class TextManager : MonoBehaviour {
     public TutorialScript tutorialS;
 	// Use this for initialization
 	void Start () {
-		Time.timeScale = 0;
+         alice.FreezeMovement = true;
 		if (textFile != null) 
 		{
 			textLines = (textFile.text.Split ('\n'));
@@ -50,8 +51,8 @@ public class TextManager : MonoBehaviour {
 			TextBox.SetActive(false);
             tutorialS.tut1.SetActive(true);
 			prologue = true;
-            Time.timeScale = 1;
-			Joystick.SetActive (true);
+            alice.FreezeMovement = false;
+            Joystick.SetActive (true);
             prolougeManager.SetActive (false);
             tutorialCanvas.SetActive(true);
             tutorialCanvas.GetComponent<TutorialScript>().StartGame = true;      

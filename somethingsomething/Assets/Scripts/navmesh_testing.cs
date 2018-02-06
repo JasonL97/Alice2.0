@@ -34,8 +34,11 @@ public class navmesh_testing : MonoBehaviour
     float ViewDistance = 400;
     float EnemyNPlayerDistance;
 
-    public AudioSource doggrowl;
+    public bool playerInSight = false;
+    public AudioSource doggoSource;
     public AudioClip dogGrowl;
+    public AudioClip dogWalking;
+
     // Use this for initialization
     void Start()
     {
@@ -74,8 +77,13 @@ public class navmesh_testing : MonoBehaviour
                 if (EnemyNPlayerDistance < 600 && angleToPlayer >= -45 && angleToPlayer <= 45)
                 {
                     Debug.Log("Player in sight!");
-                    doggrowl.clip = dogGrowl;
-                    doggrowl.Play();
+                    playerInSight = true;
+                    //doggoSource.clip = dogGrowl;
+                    //if (!doggoSource.isPlaying)
+                    //{
+                    //    doggoSource.Play();
+                    //    Debug.Log("test");
+                    //}
                     NavMesh.CalculatePath(this.transform.position, player.position, NavMesh.AllAreas, agentPath);
                     agent.SetPath(agentPath);
                 }
@@ -84,11 +92,18 @@ public class navmesh_testing : MonoBehaviour
                     if (!agent.hasPath)
                     {
                         RandomWayPoint();
+                        playerInSight = false;
+                        //if (!doggoSource.isPlaying)
+                        //{
+                        //    doggoSource.Play();
+                        //}
                     }
                 }
                // Debug.DrawRay(this.transform.position, this.transform.forward * ViewDistance, Color.red);
             }
         }
+
+      
 
         float distance = Vector3.Distance(player.position, transform.position);
         if (distance <= minRedDistance)
@@ -100,6 +115,36 @@ public class navmesh_testing : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        PlaySound();
+    }
+
+    void PlaySound()
+    {
+        if (playerInSight)
+        {
+            if(doggoSource.clip != dogGrowl)
+              doggoSource.clip = dogGrowl;
+
+            if (!doggoSource.isPlaying)
+            { 
+                Debug.Log("Why1");
+                doggoSource.Play();
+            }
+        }
+        else
+        {
+            if (doggoSource.clip != dogWalking)
+                doggoSource.clip = dogWalking;
+
+            if (!doggoSource.isPlaying)
+            {
+                Debug.Log("Why1");
+                doggoSource.Play();
+            }
+        }
+    }
     //void LateUpdate()
     //{
     //    if (player.GetComponent<Player>().hideSpot == true)

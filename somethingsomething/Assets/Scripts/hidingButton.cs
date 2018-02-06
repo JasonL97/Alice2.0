@@ -14,9 +14,6 @@ public class hidingButton : MonoBehaviour {
     public GameObject StoreDoor;
     public GameObject BasementDoor;
     public GameObject UnlockedDoor;
-    public AudioSource musicPlayer;
-    public AudioClip doorOpen;
-    public AudioClip doorClose;
     public GameObject TextBoxBG;
     public Text ChatText;
     public Text SystemText;
@@ -33,6 +30,13 @@ public class hidingButton : MonoBehaviour {
     public GameObject RUnButton;
     public Image InteractBtn;
     public GameObject StaminaBar;
+
+    public AudioSource sourceSound;
+    public AudioClip doorOpen;
+    public AudioClip doorClose;
+    public AudioClip doorLocked;
+    public AudioClip pickItem;
+    //public AudioClip HeartBeat;
     float TimePassed = 0;
 
     void Start()
@@ -113,7 +117,7 @@ public class hidingButton : MonoBehaviour {
                             SystemText.gameObject.SetActive(false);
                             CharName.SetActive(true);
                             ChatText.gameObject.SetActive(true);
-                            ChatText.text = "'The key to the store room is here... It's been weeks since I left the basement.";
+                            ChatText.text = "'The key to the store room is there... It's been weeks since I left the basement.";
                             break;
 
                         case 3:
@@ -161,16 +165,18 @@ public class hidingButton : MonoBehaviour {
 
     public void OnButtonDown()
     {
-    
+
         if (alice.hideSpot == true)
         {
             HidingScript hide = alice.HidingSpot.GetComponent<HidingScript>();
             hide.pressHide = true;
+           
             alice.GetComponent<Player>().isHiding = true;
         }
 
         if (alice.nearLight && alice.lantern != null)
         {
+            sourceSound.PlayOneShot(pickItem);
             alice.lantern.SetActive(true);
             alice.lightSource.SetActive(true);
             alice.nearLight = false;
@@ -181,6 +187,7 @@ public class hidingButton : MonoBehaviour {
 
         if (alice.nearBag && alice.bag != null)
         {
+            sourceSound.PlayOneShot(pickItem);
             alice.bag.SetActive(true);
             alice.nearBag = false;
             alice.HaveBag = true;
@@ -198,6 +205,7 @@ public class hidingButton : MonoBehaviour {
 
         if (alice.nearNote && alice.note != null)
         {
+            sourceSound.PlayOneShot(pickItem);
             alice.note.SetActive(true);           
             alice.HaveNote = true;
             Destroy(alice.note);
@@ -216,6 +224,7 @@ public class hidingButton : MonoBehaviour {
 
         if (alice.nearDairy && alice.diary != null)
         {
+            sourceSound.PlayOneShot(pickItem);
             alice.diary.SetActive(true);
             alice.HaveDiary = true;
             alice.QuestionMark.SetActive(false);
@@ -235,21 +244,19 @@ public class hidingButton : MonoBehaviour {
         #region Door Mechanics
         if (alice.nearUnlockedDoor)
         {
-            
             if (alice.unlockedDoorOpen == false)
             {
                 UnlockedDoor.transform.localEulerAngles = new Vector3(0, -90, 0);           
                 alice.unlockedDoorOpen = true;
                 UnlockedDoor.GetComponent<NavMeshObstacle>().enabled = true;
-                musicPlayer.PlayOneShot(doorOpen);  
+                sourceSound.PlayOneShot(doorOpen);
             }
             else
             {
-                UnlockedDoor.transform.localEulerAngles = new Vector3(0, -90, 0);
+                UnlockedDoor.transform.localEulerAngles = new Vector3(0, 0, 0);
                 UnlockedDoor.GetComponent<NavMeshObstacle>().enabled = false;
                 alice.unlockedDoorOpen = false;
-                musicPlayer.PlayOneShot(doorClose);
-    
+                sourceSound.PlayOneShot(doorClose);
             }
         }
 
@@ -262,14 +269,14 @@ public class hidingButton : MonoBehaviour {
                     CellaurDoor.transform.localEulerAngles = new Vector3(0, 0, 0);
                     alice.cellarDoorOpen = true;
                     CellaurDoor.GetComponent<NavMeshObstacle>().enabled = true;
-                    musicPlayer.PlayOneShot(doorOpen);                  
+                    sourceSound.PlayOneShot(doorOpen);
                 }
                 else
                 {
                     CellaurDoor.transform.localEulerAngles = new Vector3(0, 90, 0);
                     alice.cellarDoorOpen = false;
                     CellaurDoor.GetComponent<NavMeshObstacle>().enabled = false;
-                    musicPlayer.PlayOneShot(doorClose);                   
+                    sourceSound.PlayOneShot(doorClose);
                 }
             }
             else
@@ -280,6 +287,7 @@ public class hidingButton : MonoBehaviour {
                 CharName.SetActive(false);
                 DisableUI();
                 SystemText.text = "The door appears to be locked.";
+                sourceSound.PlayOneShot(doorLocked);
                 TextPopUp = true;
             }
         }
@@ -293,7 +301,7 @@ public class hidingButton : MonoBehaviour {
                 {
                     LabDoor.transform.localEulerAngles = new Vector3(0, -90, 0);
                     alice.labDoorOpen = true;
-                    musicPlayer.PlayOneShot(doorOpen);
+                    sourceSound.PlayOneShot(doorOpen);
                     LabDoor.GetComponent<NavMeshObstacle>().enabled = true;
                 }
                 else
@@ -301,7 +309,7 @@ public class hidingButton : MonoBehaviour {
                     LabDoor.transform.localEulerAngles = new Vector3(0, 0, 0);
                     alice.labDoorOpen = false;
                     LabDoor.GetComponent<NavMeshObstacle>().enabled = false;
-                    musicPlayer.PlayOneShot(doorClose);
+                    sourceSound.PlayOneShot(doorClose);
                 }
             }
             else
@@ -312,6 +320,7 @@ public class hidingButton : MonoBehaviour {
                 CharName.SetActive(false);
                 DisableUI();
                 SystemText.text = "The door appears to be locked.";
+                sourceSound.PlayOneShot(doorLocked);
                 TextPopUp = true;
             }
         }
@@ -325,7 +334,7 @@ public class hidingButton : MonoBehaviour {
                     StoreDoor.transform.localEulerAngles = new Vector3(0, -180, 0);
                     alice.storeDoorOpen = true;
                     StoreDoor.GetComponent<NavMeshObstacle>().enabled = true;
-                    musicPlayer.PlayOneShot(doorOpen);
+                    sourceSound.PlayOneShot(doorOpen);
                     if (!alice.FirstTimeOpenStore)
                     {
                         alice.doggo.SetActive(false);
@@ -341,7 +350,7 @@ public class hidingButton : MonoBehaviour {
                     StoreDoor.transform.localEulerAngles = new Vector3(0, -90, 0);
                     StoreDoor.GetComponent<NavMeshObstacle>().enabled = false;
                     alice.storeDoorOpen = false;
-                    musicPlayer.PlayOneShot(doorClose);
+                    sourceSound.PlayOneShot(doorClose);
                 }
             }
             else
@@ -352,6 +361,7 @@ public class hidingButton : MonoBehaviour {
                 CharName.SetActive(false);
                 DisableUI();
                 SystemText.text = "The door appears to be locked.";
+                sourceSound.PlayOneShot(doorLocked);
                 TextPopUp = true;
             }
         }
@@ -365,14 +375,14 @@ public class hidingButton : MonoBehaviour {
                     BasementDoor.transform.localEulerAngles = new Vector3(0, -180, 0);
                     BasementDoor.GetComponent<NavMeshObstacle>().enabled = true;
                     alice.basementDoorOpen = true;
-                    musicPlayer.PlayOneShot(doorOpen);            
+                    sourceSound.PlayOneShot(doorOpen);
                 }
                 else
                 {
                     BasementDoor.transform.localEulerAngles = new Vector3(0, -90, 0);
                     BasementDoor.GetComponent<NavMeshObstacle>().enabled = false;
                     alice.basementDoorOpen = false;
-                    musicPlayer.PlayOneShot(doorClose);                
+                    sourceSound.PlayOneShot(doorClose);
                 }
             }
             else
@@ -382,16 +392,17 @@ public class hidingButton : MonoBehaviour {
                 ChatText.gameObject.SetActive(false);
                 CharName.SetActive(false);
                 SystemText.text = "The door appears to be locked.";
+                sourceSound.PlayOneShot(doorLocked);
                 DisableUI();
                 TextPopUp = true;
             }
-            //SceneManager.LoadScene("winScene");
         }
         #endregion
 
         #region Key Mechanics
         if (alice.nearCellarKey)
         {
+            sourceSound.PlayOneShot(pickItem);
             alice.isCellarKey = true;
             Destroy(alice.CellarKey);
             alice.QuestionMark.SetActive(false);
@@ -408,6 +419,7 @@ public class hidingButton : MonoBehaviour {
 
         if (alice.nearLabKey)
         {
+            sourceSound.PlayOneShot(pickItem);
             alice.isLabKey = true;
             alice.isCellarKey = true;
             Destroy(alice.LabKey);
@@ -427,6 +439,7 @@ public class hidingButton : MonoBehaviour {
 
         if (alice.nearStoreKey)
         {
+            sourceSound.PlayOneShot(pickItem);
             alice.isStoreKey = true;
             Destroy(alice.StoreKey);
             TextBoxBG.SetActive(true);
@@ -445,6 +458,7 @@ public class hidingButton : MonoBehaviour {
         if (alice.nearBaseKey)
         {
             alice.doggo.SetActive(false);
+            sourceSound.PlayOneShot(pickItem);
             alice.isBasementKey = true;
             alice.QuestionMark.SetActive(false);
             Destroy(alice.BasementKey);

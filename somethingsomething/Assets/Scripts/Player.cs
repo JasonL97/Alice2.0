@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public bool isLabKey = false;
     public bool isStoreKey = false;
     public bool isBasementKey = false;
-    public bool unlockedDoorOpen = true;
+    public bool unlockedDoorOpen = false;
     public bool cellarDoorOpen = false;
     public bool labDoorOpen = false;
     public bool storeDoorOpen = false;
@@ -105,12 +105,11 @@ public class Player : MonoBehaviour
     //public bool isHide = false;
     //public bool pressHide = false;
 
-    public AudioSource musicPlayer;
-    public AudioClip item_pickup;
+    public AudioSource aliceHeart;
+    public AudioSource sourceSound;
+    public AudioClip doorLocked;
     public AudioClip walking;
-    public AudioSource heartbeatPlayer;
-    public AudioClip normalhb;
-    public AudioClip fasthb;
+    public AudioClip heartbeat;
 
     private Animator anim;
 
@@ -175,7 +174,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(HaveBag && isLabKey && !TeachInvenPass && TutBag)
+        if(HaveBag && !TeachInvenPass && TutBag)
         {
             tutScript.TeachInven = true;
             tutScript.tut3.SetActive(true);          
@@ -208,6 +207,7 @@ public class Player : MonoBehaviour
             Move();
         }
         else {
+            sourceSound.Stop();
             isMoving = false;
             isIdling = true;
             anim.SetBool("isIdle", true);
@@ -216,18 +216,21 @@ public class Player : MonoBehaviour
         }
         if (isHiding == true)
         {
+            if(aliceHeart.clip != heartbeat)
+                aliceHeart.clip = heartbeat;
+
+            if (!aliceHeart.isPlaying)
+            {
+                aliceHeart.Play();
+            }
             thisRigidbody.isKinematic = true;
             GetComponent<BoxCollider>().enabled = false;
-            heartbeatPlayer.clip = fasthb;
-            heartbeatPlayer.Play();
         }
         else
         {
+            aliceHeart.Stop();
             thisRigidbody.isKinematic = false;
             GetComponent<BoxCollider>().enabled = true;
-            heartbeatPlayer.clip = normalhb;
-            heartbeatPlayer.Play();
-
         }
 
     }
@@ -239,18 +242,21 @@ public class Player : MonoBehaviour
             Vector3 direction = PoolInput();
             Vector3 rightMovement = right * moveSpeed * Time.deltaTime * joystick.Horizontal();
             Vector3 upMovement = forward * moveSpeed * Time.deltaTime * joystick.Vertical();
-
+            sourceSound.clip = walking;
+            if (!sourceSound.isPlaying)
+            {
+                sourceSound.Play();
+            }
             Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
             frontDirection = heading.z;
             transform.forward = heading;
             transform.position += rightMovement;
             transform.position += upMovement;
             isMoving = true;
-            musicPlayer.clip = walking;
-            musicPlayer.Play();
             anim.SetBool("isIdle", false);
             anim.SetBool("isMove", true);
         }
+
     }
 
     Vector3 PoolInput()
@@ -272,27 +278,14 @@ public class Player : MonoBehaviour
     //    mainCamera.transform.position = camera;
     //}
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "HidingSpot")
-        {
-            HidingSpot = collision.gameObject;
-            hideSpot = true;
-        }       
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "HidingSpot")
-        {
-            HidingSpot = null;
-            hideSpot = false;
-        }
-    }
 
     void OnTriggerEnter(Collider col)
         {
-
+            if (col.gameObject.tag == "HidingSpot")
+            {
+                HidingSpot = col.gameObject;
+                hideSpot = true;
+            }    
         
             if (col.gameObject.tag == "lantern")
             {
@@ -378,6 +371,7 @@ public class Player : MonoBehaviour
             {
                 CellarTrigger = true;
                 CellarDoor.transform.localEulerAngles = new Vector3(0, 90, 0);
+            sourceSound.PlayOneShot(doorLocked);
                 SurpriseMark.transform.position = new Vector3(this.transform.position.x, SurpriseMark.transform.position.y, this.transform.position.z);
                 cellarDoorOpen = false;
                 SurpriseMark.SetActive(true);
@@ -390,6 +384,7 @@ public class Player : MonoBehaviour
                 doggo.SetActive(true);
                 Dog_Spawn = true;
                 CellarDoor.transform.localEulerAngles = new Vector3(0, 90, 0);
+            sourceSound.PlayOneShot(doorLocked);
                 SurpriseMark.transform.position = new Vector3(this.transform.position.x, SurpriseMark.transform.position.y, this.transform.position.z);
                 TextBoxBG.SetActive(true);
                 SystemText.gameObject.SetActive(false);
@@ -408,6 +403,11 @@ public class Player : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
+        if (col.gameObject.tag == "HidingSpot")
+        {
+            HidingSpot = null;
+            hideSpot = false;
+        }
         if (col.gameObject.tag == "lantern")
         {
             nearLight = false;
