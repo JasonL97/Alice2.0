@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class navmesh_testing : MonoBehaviour
+public class navMesh_Testing : MonoBehaviour
 {
     public Graphic redOverlay;
     public float minRedDistance = 500;
@@ -99,11 +99,11 @@ public class navmesh_testing : MonoBehaviour
                         //}
                     }
                 }
-               // Debug.DrawRay(this.transform.position, this.transform.forward * ViewDistance, Color.red);
+                // Debug.DrawRay(this.transform.position, this.transform.forward * ViewDistance, Color.red);
             }
         }
 
-      
+
 
         float distance = Vector3.Distance(player.position, transform.position);
         if (distance <= minRedDistance)
@@ -124,11 +124,11 @@ public class navmesh_testing : MonoBehaviour
     {
         if (playerInSight)
         {
-            if(doggoSource.clip != dogGrowl)
-              doggoSource.clip = dogGrowl;
+            if (doggoSource.clip != dogGrowl)
+                doggoSource.clip = dogGrowl;
 
             if (!doggoSource.isPlaying)
-            { 
+            {
                 Debug.Log("Why1");
                 doggoSource.Play();
             }

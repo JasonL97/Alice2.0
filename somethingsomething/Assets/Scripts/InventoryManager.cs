@@ -52,11 +52,15 @@ public class InventoryManager : MonoBehaviour
             InventoryItems[3].SetActive(true);
             InventoryItems[3].transform.position = InventorySpace[3].transform.position;
         }
-
-        if (alice.isBasementKey)
+        if (alice.HaveNote)
         {
             InventoryItems[4].SetActive(true);
             InventoryItems[4].transform.position = InventorySpace[4].transform.position;
+        }
+        if (alice.isBasementKey)
+        {
+            InventoryItems[5].SetActive(true);
+            InventoryItems[5].transform.position = InventorySpace[5].transform.position;
         }
     }
 
@@ -73,16 +77,6 @@ public class InventoryManager : MonoBehaviour
 
     public void Input_2ndSpace()
     {
-        if (alice.isLabKey)
-        {
-            DescriptionText.gameObject.SetActive(true);
-            ItemImage.gameObject.SetActive(true);
-            DescriptionText.text = "This seems to be the key to a certain lab...?";
-            ItemImage.sprite = InventoryItems[1].GetComponent<Image>().sprite;
-        }
-    }
-    public void Input_3rdSpace()
-    {
         if (alice.isCellarKey)
         {
             DescriptionText.gameObject.SetActive(true);
@@ -91,6 +85,18 @@ public class InventoryManager : MonoBehaviour
             ItemImage.sprite = InventoryItems[2].GetComponent<Image>().sprite;
         }
     }
+
+    public void Input_3rdSpace()
+    {
+        if (alice.isLabKey)
+        {
+            DescriptionText.gameObject.SetActive(true);
+            ItemImage.gameObject.SetActive(true);
+            DescriptionText.text = "This seems to be the key to a certain lab...?";
+            ItemImage.sprite = InventoryItems[1].GetComponent<Image>().sprite;
+        }
+    }
+    
 
     public void Input_4thSpace()
     {
@@ -105,13 +111,22 @@ public class InventoryManager : MonoBehaviour
 
     public void Input_5thSpace()
     {
+        if (alice.HaveNote)
+        {
+            DescriptionText.gameObject.SetActive(true);
+            ItemImage.gameObject.SetActive(true);
+            DescriptionText.text = "A note left behind by the owner of this place...";
+            ItemImage.sprite = InventoryItems[4].GetComponent<Image>().sprite;
+        }
+    }
+    public void Input_6thSpace()
+    {
         if (alice.isBasementKey)
         {
             DescriptionText.gameObject.SetActive(true);
             ItemImage.gameObject.SetActive(true);
             DescriptionText.text = "The key to the basement door. Now I can finally get out of here...!";
-            ItemImage.sprite = InventoryItems[4].GetComponent<Image>().sprite;
+            ItemImage.sprite = InventoryItems[5].GetComponent<Image>().sprite;
         }
     }
-
 }

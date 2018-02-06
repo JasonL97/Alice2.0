@@ -30,6 +30,7 @@ public class hidingButton : MonoBehaviour {
     public GameObject RUnButton;
     public Image InteractBtn;
     public GameObject StaminaBar;
+    public Pause_button pauseCanvas;
 
     public AudioSource sourceSound;
     public AudioClip doorOpen;
@@ -487,7 +488,14 @@ public class hidingButton : MonoBehaviour {
     void EnableUI()
     {
         StaminaBar.SetActive(true);
-        PauseButton.SetActive(true);
+        if (pauseCanvas.GetComponent<Pause_button>().isTrue)
+        {
+            PauseButton.SetActive(true);
+        }
+        else
+        {
+            PauseButton.SetActive(false);
+        }
         RUnButton.SetActive(true);
         UI_JoyStick.SetActive(true);
         InteractBtn.enabled = true;

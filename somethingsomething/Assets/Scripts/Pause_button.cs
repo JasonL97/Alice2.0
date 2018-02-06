@@ -5,8 +5,10 @@ using UnityEngine;
 public class Pause_button : MonoBehaviour {
     public GameObject pauseCanvas;
     public GameObject InventoryPanel;
+    public GameObject pauseButton;
+    public GameObject backButton;
     public Player alice;
-    public bool isTrue = false;
+    public bool isTrue = true;
     private float savedTimeScale;
 
     // Use this for initialization
@@ -19,24 +21,51 @@ public class Pause_button : MonoBehaviour {
 		
 	}
 
-    public void OnMouseButton()
+    public void OpenInventory()
     {
-        if (isTrue == true)
+        //if (alice.FreezeMovement)
+        //{
+        //    pauseCanvas.SetActive(false);
+        //    InventoryPanel.SetActive(false);         
+        //    alice.FreezeMovement = false;
+        //}
+        //else
+        //{
+        //    alice.FreezeMovement = true;
+        //}
+
+        pauseCanvas.SetActive(true);
+
+        if (alice.HaveBag)
         {
-            pauseCanvas.SetActive(false);   
-            InventoryPanel.SetActive(false);
+            InventoryPanel.SetActive(true);
+            pauseButton.SetActive(false);
             isTrue = false;
-            Time.timeScale = savedTimeScale;
         }
-        else if (isTrue == false)
+        else
         {
-            pauseCanvas.SetActive(true);
-
-            if (alice.HaveBag)
-                InventoryPanel.SetActive(true);
-
-            isTrue = true;
-            Time.timeScale = 0;
+            alice.TextBoxBG.SetActive(true);
+            alice.SystemText.gameObject.SetActive(true);
+            alice.CharName.SetActive(false);
+            alice.ChatText.gameObject.SetActive(false);
+            alice.SystemText.text = "No Bag";           
         }
+
+        
+     
+    }
+
+    public void closeInventory()
+    {
+        pauseCanvas.SetActive(false);
+
+        if (alice.HaveBag)
+        {
+            InventoryPanel.SetActive(false);
+            pauseButton.SetActive(true);
+        }
+
+        isTrue = true;
+        alice.FreezeMovement = false;
     }
 }

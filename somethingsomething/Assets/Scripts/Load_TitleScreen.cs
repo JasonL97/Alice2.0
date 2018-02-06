@@ -15,8 +15,9 @@ public class Load_TitleScreen : MonoBehaviour
     }
     public void OnMouseButton()
     {
-        sound.Play();
-        StartCoroutine(DoFadeAndLoad());
+        //sound.Play();
+    //    StartCoroutine(DoFadeAndLoad());
+        SceneManager.LoadScene("titleScreen");
     }
 
     private IEnumerator DoFadeAndLoad()
